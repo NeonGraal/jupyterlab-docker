@@ -1,6 +1,8 @@
 # install deps
 sudo apt-get update
-sudo apt-get install nodejs-legacy npm git pip3 python3
+sudo apt-get install -y --no-install-recommends nodejs-legacy npm git python3 python3-pip python-dev build-essential
+
+sudo pip install --upgrade pip 
 
 # install jupyter
 pip install notebook
