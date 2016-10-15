@@ -6,23 +6,31 @@ addons:
   apt:
     packages:
     - libgmp-dev
+    
+services:
+  - docker
 
 env:
-# - ARGS=""
-#- ARGS="--resolver lts-2"
-# - ARGS="--resolver lts-3"
-- ARGS="--resolver lts-7.2"
-# - ARGS="--resolver nightly"
+  global:
+  - ACCOUNT=ocramz
+  - PROJECT=jupyterlab-docker
+  - IMAGE_NAME=${ACCOUNT}/${PROJECT}
+# # - ARGS=""
+# #- ARGS="--resolver lts-2"
+# # - ARGS="--resolver lts-3"
+# - ARGS="--resolver lts-7.2"
+# # - ARGS="--resolver nightly"
 
 before_install:
-# Download and unpack the stack executable
-- mkdir -p ~/.local/bin
-- export PATH=$HOME/.local/bin:$PATH
-- travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
+# # Download and unpack the stack executable
+# - mkdir -p ~/.local/bin
+# - export PATH=$HOME/.local/bin:$PATH
+# - travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
 
 script: 
-- stack $ARGS --no-terminal --install-ghc test --haddock
+  - docker build -t ${IMAGE_NAME} -f Dockerfile .
+# - stack $ARGS --no-terminal --install-ghc test --haddock
 
-cache:
-  directories:
-  - $HOME/.stack
+# cache:
+#   directories:
+#   - $HOME/.stack
