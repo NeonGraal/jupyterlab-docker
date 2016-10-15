@@ -9,7 +9,7 @@ apt-get install -y git python-pip python3 python3-pip python-dev build-essential
 apt-get clean && apt-get purge && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
-pip install jupyterlab
+pip install jupyterlab widgetsnbextension
 jupyter serverextension enable --py jupyterlab --sys-prefix
 
 
