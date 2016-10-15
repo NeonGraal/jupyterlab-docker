@@ -13,19 +13,17 @@ apt-get install -yq --no-install-recommends \
     sudo \
     locales \
     git \
-    python-pip python3 python3-pip python-dev \
+    python-dev \
     build-essential \
     libzmq3 libzmq3-dev \
     unzip \
     libsm6 \
-    pandoc \
     texlive-latex-base \
     texlive-latex-extra \
     texlive-fonts-extra \
     texlive-fonts-recommended \
     texlive-generic-recommended \
     libxrender1 \
-    inkscape \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
