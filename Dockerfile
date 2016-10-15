@@ -37,15 +37,11 @@ RUN mkdir /home/$NB_USER/work && \
     echo "cacert=/etc/ssl/certs/ca-certificates.crt" > /home/$NB_USER/.curlrc
 
 
+USER root
 
 # install jupyterlab
 RUN pip install jupyterlab widgetsnbextension && \
     jupyter serverextension enable --py jupyterlab --sys-prefix
-
-
-
-
-USER root
 
 EXPOSE 8888
 WORKDIR /home/$NB_USER/work
