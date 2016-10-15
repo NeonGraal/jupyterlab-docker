@@ -1,8 +1,8 @@
 # install deps
-sudo apt-get update
-sudo apt-get install -y --no-install-recommends git python-pip python3 python3-pip python-dev build-essential
+apt-get update
+apt-get install -y --no-install-recommends git python-pip python3 python3-pip python-dev build-essential
 
-sudo pip install --upgrade pip 
+pip install --upgrade pip 
 
 
 # clean up install cache
