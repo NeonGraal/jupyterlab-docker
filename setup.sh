@@ -1,6 +1,6 @@
 # install deps
 apt-get update
-apt-get install -y --no-install-recommends git python-pip python3 python3-pip python-dev build-essential
+apt-get install -y --no-install-recommends git python-pip python3 python3-pip python-dev build-essential libzmq
 
 pip install --upgrade pip 
 
