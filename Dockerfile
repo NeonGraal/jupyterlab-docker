@@ -9,6 +9,10 @@ WORKDIR ${SWDIR}
 
 RUN ./setup.sh
 
+
+
 EXPOSE 8888
     
-    
+
+
+RUN jupyter lab

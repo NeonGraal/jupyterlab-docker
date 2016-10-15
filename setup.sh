@@ -1,6 +1,8 @@
+# install deps
 sudo apt-get update
 sudo apt-get install nodejs-legacy npm git pip3 python3
 
+# install jupyter
 pip install notebook
 
 git clone https://github.com/jupyterlab/jupyterlab.git
