@@ -1,4 +1,5 @@
-FROM phusion/baseimage:0.9.18
+# FROM phusion/baseimage:0.9.18
+FROM node:6.8.0
 
 MAINTAINER Marco Zocca, zocca.marco gmail
 
