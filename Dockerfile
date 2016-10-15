@@ -14,6 +14,7 @@ RUN ./setup.sh
 
 EXPOSE 8888
     
+ENTRYPOINT ["tini", "--"]
 
 
 CMD jupyter lab
