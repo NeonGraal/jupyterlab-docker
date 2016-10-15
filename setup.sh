@@ -13,7 +13,7 @@ apt-get install -yq --no-install-recommends \
     sudo \
     locales \
     git \
-    python-dev \
+    python-dev python-pip\
     build-essential \
     libzmq3 libzmq3-dev \
     unzip \
