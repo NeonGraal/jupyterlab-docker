@@ -8,7 +8,8 @@ help:
 	@echo "Use \`make <target>' where <target> is one of"
 	@echo "  help     to display this help message"
 	@echo "  build    to build the docker image"
-	@echo "  pull     to retrieve the image from the docker registry" 
+	@echo "  pull     to retrieve the image from the docker registry"
+	@echo "  run      builds and run JupyterLab server"
 
 
 pull:
@@ -18,5 +19,7 @@ pull:
 build:
 	docker build -t ${TAG} .
 
-# nb:
-# 	docker run --rm -it -p 8888:8888 ${TAG} 
+
+run:
+	make build
+	docker run --rm -it -p 8888:8888 ${TAG}
