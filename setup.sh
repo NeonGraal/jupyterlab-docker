@@ -1,23 +1,47 @@
+REPO=http://cdn-fastly.deb.debian.org
+
 # install deps
+
+echo "deb $REPO/debian jessie main\ndeb $REPO/debian-security jessie/updates main" > /etc/apt/sources.list \
+
 apt-get update
-apt-get install -y --no-install-recommends git python-pip python3 python3-pip python-dev build-essential libzmq3 libzmq3-dev
+apt-get -yq dist-upgrade
+apt-get install -yq --no-install-recommends \
+    wget \
+    bzip2 \
+    ca-certificates \
+    sudo \
+    locales \
+    git \
+    python-pip python3 python3-pip python-dev \
+    build-essential \
+    libzmq3 libzmq3-dev
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
 
-# pip install --upgrade pip
+# set locale
+echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
+    locale-gen
 
-# TINI (Jupyter dep)
-ENV TINI_VER v0.9.0
-ENV TINI_SHA faafbfb5b079303691a939a747d7f60591f2143164093727e870b289a44d9872
-
-wget --quiet https://github.com/krallin/tini/releases/download/${TINI_VER}/tini && \
-    echo "${TINI_SHA} *tini" | sha256sum -c - && \
+# Install Tini
+wget --quiet https://github.com/krallin/tini/releases/download/v0.10.0/tini && \
+    echo "1361527f39190a7338a0b434bd8c88ff7233ce7b9a4876f3315c22fce7eca1b0 *tini" | sha256sum -c - && \
     mv tini /usr/local/bin/tini && \
     chmod +x /usr/local/bin/tini
 
 
-# clean up install cache
-apt-get clean && apt-get purge && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
+# Create jovyan user with UID=1000 and in the 'users' group
+useradd -m -s /bin/bash -N -u $NB_UID $NB_USER && \
+    mkdir -p $PY_DIR && \
+    chown $NB_USER $PY_DIR
+
+
+
+
+
+# install jupyterlab
 pip install jupyterlab widgetsnbextension
 jupyter serverextension enable --py jupyterlab --sys-prefix
 
