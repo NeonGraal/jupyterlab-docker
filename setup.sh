@@ -15,7 +15,17 @@ apt-get install -yq --no-install-recommends \
     git \
     python-pip python3 python3-pip python-dev \
     build-essential \
-    libzmq3 libzmq3-dev
+    libzmq3 libzmq3-dev \
+    unzip \
+    libsm6 \
+    pandoc \
+    texlive-latex-base \
+    texlive-latex-extra \
+    texlive-fonts-extra \
+    texlive-fonts-recommended \
+    texlive-generic-recommended \
+    libxrender1 \
+    inkscape \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
@@ -42,8 +52,7 @@ useradd -m -s /bin/bash -N -u $NB_UID $NB_USER && \
 
 
 # install jupyterlab
-pip install jupyterlab widgetsnbextension
-jupyter serverextension enable --py jupyterlab --sys-prefix
+
 
 
 

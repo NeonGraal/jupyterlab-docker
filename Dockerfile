@@ -36,18 +36,14 @@ RUN mkdir /home/$NB_USER/work && \
     mkdir /home/$NB_USER/.jupyter && \
     echo "cacert=/etc/ssl/certs/ca-certificates.crt" > /home/$NB_USER/.curlrc
 
-# Install Jupyter notebook as jovyan
-RUN conda install --quiet --yes \
-    'notebook=4.2*' \
-    && conda clean -tipsy
+
+
+# install jupyterlab
+RUN pip install jupyterlab widgetsnbextension && \
+    jupyter serverextension enable --py jupyterlab --sys-prefix
 
 
 
-
-
-
-# Install JupyterHub to get the jupyterhub-singleuser startup script
-RUN pip --no-cache-dir install 'jupyterhub==0.5'
 
 USER root
 
@@ -57,6 +53,7 @@ WORKDIR /home/$NB_USER/work
 # Configure container startup
 ENTRYPOINT ["tini", "--"]
 CMD ["start-notebook.sh"]
+# CMD jupyter lab --no-browser
 
 # Add local files as late as possible to avoid cache busting
 COPY start.sh /usr/local/bin/
@@ -74,4 +71,4 @@ USER $NB_USER
 
 
 
-CMD jupyter lab --no-browser
+
