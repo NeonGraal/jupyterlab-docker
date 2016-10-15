@@ -18,14 +18,14 @@ apt-get install -yq --no-install-recommends \
     libzmq3 libzmq3-dev \
     unzip \
     libsm6 \
-    # pandoc \
+    pandoc \
     texlive-latex-base \
     texlive-latex-extra \
     texlive-fonts-extra \
     texlive-fonts-recommended \
     texlive-generic-recommended \
     libxrender1 \
-    # inkscape \
+    inkscape \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
