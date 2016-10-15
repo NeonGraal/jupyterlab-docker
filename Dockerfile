@@ -16,4 +16,4 @@ EXPOSE 8888
     
 
 
-RUN jupyter lab
+CMD jupyter lab
