@@ -2,8 +2,12 @@ REPO=http://cdn-fastly.deb.debian.org
 
 # install deps
 
-echo "deb $REPO/debian jessie main\ndeb $REPO/debian-security jessie/updates main" > /etc/apt/sources.list \
+echo "deb $REPO/debian jessie main\ndeb $REPO/debian-security jessie/updates main" > /etc/apt/sources.list
 
+# set locale
+echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
+    locale-gen
+     
 apt-get update
 apt-get -yq dist-upgrade
 apt-get install -yq --no-install-recommends \
@@ -27,9 +31,7 @@ apt-get install -yq --no-install-recommends \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-# set locale
-echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
-    locale-gen
+
 
 # Install Tini
 wget --quiet https://github.com/krallin/tini/releases/download/v0.10.0/tini && \

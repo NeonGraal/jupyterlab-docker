@@ -9,7 +9,7 @@ help:
 	@echo "  help     to display this help message"
 	@echo "  build    to build the docker image"
 	@echo "  pull     to retrieve the image from the docker registry"
-	@echo "  run      builds and run JupyterLab server"
+	@echo "  run      run JupyterLab server"
 
 
 pull:
@@ -21,5 +21,6 @@ build:
 
 
 run:
-	make build
 	docker run --rm -it -p 8888:8888 ${TAG}
+
+
