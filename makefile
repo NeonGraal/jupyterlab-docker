@@ -1,4 +1,4 @@
-ACCOUNT = "ocramz"
+ACCOUNT = "neongraal"
 PROJECT = "jupyterlab-docker"
 TAG = ${ACCOUNT}/${PROJECT}
 
@@ -8,12 +8,7 @@ help:
 	@echo "Use \`make <target>' where <target> is one of"
 	@echo "  help     to display this help message"
 	@echo "  build    to build the docker image"
-	@echo "  pull     to retrieve the image from the docker registry"
 	@echo "  run      run JupyterLab server"
-
-
-pull:
-	docker pull ${TAG}
 
 
 build:
@@ -22,5 +17,3 @@ build:
 
 run:
 	docker run --rm -it -p 8888:8888 ${TAG}
-
-
