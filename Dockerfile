@@ -34,11 +34,14 @@ RUN mkdir /home/$NB_USER/work && \
 
 USER root
 
-COPY jupyter_notebook_config.py /home/$NB_USER/.jupyter/
-
 # install jupyterlab
+COPY jupyter_notebook_config.py /home/$NB_USER/.jupyter/
 COPY setup-jupyter.sh ${SWDIR}/
 RUN ./setup-jupyter.sh && rm -f setup-jupyter.sh
+
+# install kernels
+COPY setup-kernels.sh ${SWDIR}/
+RUN ./setup-kernels.sh && rm -f setup-kernels.sh
 
 EXPOSE 8888
 WORKDIR /home/$NB_USER/work

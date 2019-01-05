@@ -1,5 +1,11 @@
-# install deps
 apt-get update
+
+# set locale
+apt-get install -yq --no-install-recommends locales
+echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
+    locale-gen
+
+# install deps
 apt-get -yq dist-upgrade
 apt-get install -yq --no-install-recommends \
     wget \
@@ -12,14 +18,17 @@ apt-get install -yq --no-install-recommends \
     libzmq5 libzmq5-dev \
     unzip \
     libsm6 \
+    libxrender1 \
     texlive-latex-base \
     texlive-latex-extra \
     texlive-fonts-extra \
     texlive-fonts-recommended \
-    texlive-generic-recommended \
-    libxrender1 \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
+    texlive-generic-recommended
+#    texlive \
+#    texlive-full \
+#    imagemagick
+apt-get clean
+rm -rf /var/lib/apt/lists/*
 
 
 # Install Tini

@@ -17,3 +17,10 @@ build:
 
 run:
 	docker run --rm -it -p 8888:8888 ${TAG}
+
+
+up:
+	docker-compose -p jupyterlab up -d
+
+down:
+	docker-compose -p jupyterlab down

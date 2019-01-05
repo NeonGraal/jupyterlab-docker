@@ -10,4 +10,5 @@ services:
       - "8888:8888"
     environment:
       - JUPYTER_ENABLE_LAB=1
+      - PASSWORD_HASH=sha1:7d6e467ac5c1:c1c2e4df8596292e4e4ee7e4c15450ef08a4aac5
     command: start-notebook.sh --NotebookApp.notebook_dir=/notebooks
