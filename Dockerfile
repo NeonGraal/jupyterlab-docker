@@ -40,8 +40,12 @@ COPY setup-jupyter.sh ${SWDIR}/
 RUN ./setup-jupyter.sh && rm -f setup-jupyter.sh
 
 # install kernels
+COPY setup-python.sh ${SWDIR}/
+RUN ./setup-python.sh && rm -f setup-python.sh
 COPY setup-kernels.sh ${SWDIR}/
 RUN ./setup-kernels.sh && rm -f setup-kernels.sh
+COPY setup-tidy.sh ${SWDIR}/
+RUN ./setup-tidy.sh && rm -f setup-tidy.sh
 
 EXPOSE 8888
 WORKDIR /home/$NB_USER/work

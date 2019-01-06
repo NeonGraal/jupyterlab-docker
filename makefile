@@ -24,3 +24,6 @@ up:
 
 down:
 	docker-compose -p jupyterlab down
+
+bash:
+	docker run --rm -it -u root ${TAG} bash

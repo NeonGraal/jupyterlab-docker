@@ -1,18 +1,17 @@
 apt-get update
 apt-get install -yq --no-install-recommends \
-    python-pip python3.7-dev \
-    software-properties-common
+    software-properties-common curl
 
-echo "Installing python 2.7 kernel"
-python2 -m pip install -U pip setuptools wheel
-python2 -m pip install ipykernel
+add-apt-repository ppa:chronitis/jupyter
+echo "deb http://ppa.launchpad.net/chronitis/jupyter/ubuntu artful main" >> /etc/apt/sources.list.d/chronitis-ubuntu-jupyter-bionic.list
+echo "deb http://ppa.launchpad.net/chronitis/jupyter/ubuntu xenial main" >> /etc/apt/sources.list.d/chronitis-ubuntu-jupyter-bionic.list
 
-echo "Installing python 3.7 kernel"
-python3.7 -m pip install -U pip setuptools wheel
-python3.7 -m pip install ipykernel
-python3.7 -m ipykernel install --user --name python3.7 --display-name "Python 3.7"
+curl -sL https://deb.nodesource.com/setup_11.x | bash -
 
-chown -R $NB_USER:users /home/$NB_USER/.jupyter /home/$NB_USER/.local
-apt-get install -yq --no-install-recommends -f
-apt-get clean
-rm -rf /var/lib/apt/lists/*
+apt-get install -yq --no-install-recommends \
+    nodejs npm \
+    irkernel \
+    iruby
+
+npm install -g ijavascript
+ijsinstall
